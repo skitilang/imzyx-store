@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMZYY - Premium Game & Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF3A44;
+            --primary-dark: #D1000A;
+            --primary-light: #FFEBEE;
+            --accent: #FFC107;
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --dark-light: #1E1E1E;
+            --text: #FFFFFF;
+            --text-light: #B0B0B0;
+            --text-dark: #333333;
+            --bg: #000000;
+            --card: #1A1A1A;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --success: #4CAF50;
+            --neon: 0 0 10px rgba(255, 58, 68, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, var(--darker), var(--dark));
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 58, 68, 0.2);
+        }
+
+        /* MAIN APP STYLES */
+        .app-header {
+            background: linear-gradient(135deg, var(--dark-light), var(--darker));
+            color: white;
+            padding: 20px 15px;
+            position: relative;
+            z-index: 10;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 58, 68, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: var(--neon);
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 17px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .user-balance {
+            font-size: 12px;
+            opacity: 0.9;
+            color: var(--text-light);
+        }
+        
+        .app-nav {
+            display: flex;
+            background: var(--dark-light);
+            border-radius: 16px 16px 0 0;
+            padding: 15px;
+            margin-top: -15px;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        
+        .app-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-item {
+            flex: 1;
+            min-width: 85px;
+            text-align: center;
+            padding: 10px 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 3px;
+            color: var(--text-light);
+        }
+        
+        .nav-item.active {
+            background: rgba(255, 58, 68, 0.2);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--neon);
+        }
+        
+        .nav-item i {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item p {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .app-content {
+            padding: 15px;
+        }
+        
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-shadow: 0 0 5px rgba(255, 58, 68, 0.5);
+        }
+        
+        .section-title i {
+            color: var(--primary);
+        }
+        
+        /* Price List Styles */
+        .price-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .price-item {
+            background: var(--dark-light);
+            border-radius: 10px;
+            padding: 15px 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 58, 68, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .price-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--neon);
+            border-color: var(--primary);
+        }
+        
+        .price-value {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 17px;
+        }
+        
+        .price-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+        
+        .stock-badge {
+            background: var(--success);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        
+        .low-stock {
+            background: #FF9800;
+        }
+        
+        .out-of-stock {
+            background: #F44336;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .info-box {
+            background: rgba(255, 58, 68, 0.1);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 15px;
+        }
+        
+        .info-text {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        /* Payment Info */
+        .payment-info {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px dashed rgba(255, 58, 68, 0.5);
+            text-align: center;
+        }
+        
+        .payment-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .payment-number {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 8px 0;
+        }
+        
+        .payment-note {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        
+        .qris-image {
+            width: 100%;
+            max-width: 250px;
+            margin: 15px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 58, 68, 0.3);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--dark-light);
+            border: 1px solid rgba(255, 58, 68, 0.3);
+            border-radius: 8px;
+            font-size: 15px;
+            color: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 58, 68, 0.2);
+        }
+        
+        /* Calculator Styles */
+        .calculator-container {
+            background: var(--dark-light);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 58, 68, 0.2);
+        }
+        
+        .calculator-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        .calculator-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .calculator-input input {
+            flex: 1;
+            padding: 12px 15px;
+            background: var(--dark-light);
+            border: 1px solid rgba(255, 58, 68, 0.3);
+            border-radius: 8px;
+            font-size: 15px;
+            text-align: center;
+            color: white;
+        }
+        
+        .calculator-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 58, 68, 0.2);
+        }
+        
+        .calculator-input span {
+            margin: 0 10px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .calculator-result {
+            background: rgba(255, 58, 68, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            border: 1px dashed rgba(255, 58, 68, 0.3);
+        }
+        
+        .result-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .result-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .calculator-note {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+        
+        .mt-10 {
+            margin-top: 10px;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* New styles for additional sections */
+        .jpm-item {
+            display: flex;
+            justify-content: space-between;
+            background: var(--dark-light);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: var(--shadow);
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 58, 68, 0.1);
+        }
+        
+        .jpm-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon);
+            border-color: var(--primary);
+        }
+        
+        .jpm-left {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .jpm-right {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* E-book styles */
+        .ebook-item {
+            background: var(--dark-light);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255, 58, 68, 0.1);
+        }
+        
+        .ebook-cover {
+            width: 80px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        
+        .ebook-info {
+            flex: 1;
+        }
+        
+        .ebook-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .ebook-author {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        
+        .ebook-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 16px;
+        }
+        
+        /* Buy Now Button */
+        .buy-now-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .buy-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon);
+        }
+        
+        /* Payment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(to bottom, var(--dark-light), var(--darker));
+            width: 90%;
+            max-width: 350px;
+            border-radius: 15px;
+            padding: 20px;
+            animation: modalFadeIn 0.3s;
+            border: 1px solid rgba(255, 58, 68, 0.3);
+            box-shadow: var(--neon);
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 58, 68, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .modal-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .close-modal {
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+        }
+        
+        .modal-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .continue-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .continue-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon);
+        }
+        
+        /* Pulsa Operator Tabs */
+        .operator-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 58, 68, 0.3);
+            overflow-x: auto;
+        }
+        
+        .operator-tab {
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            color: var(--text-light);
+        }
+        
+        .operator-tab.active {
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Note Box */
+        .note-box {
+            background: rgba(255, 235, 59, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid rgba(255, 235, 59, 0.5);
+            font-size: 13px;
+        }
+        
+        .note-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #FFEB3B;
+        }
+        
+        /* Game Styles */
+        #gameSection {
+            text-align: center;
+        }
+        
+        .game-container {
+            background: var(--dark-light);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 58, 68, 0.2);
+        }
+        
+        .game-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(255, 58, 68, 0.5);
+        }
+        
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 250px;
+        }
+        
+        .game-cell {
+            aspect-ratio: 1/1;
+            background: rgba(255, 58, 68, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            color: white;
+        }
+        
+        .game-cell:hover {
+            background: rgba(255, 58, 68, 0.3);
+        }
+        
+        .game-status {
+            margin: 15px 0;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--primary);
+        }
+        
+        .game-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon);
+        }
+        
+        /* Glow effect for important elements */
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(255, 58, 68, 0.5);
+            }
+            to {
+                box-shadow: 0 0 15px rgba(255, 58, 68, 0.8);
+            }
+        }
+        
+        /* New FF Diamond form styles */
+        .ff-form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .ff-form-col {
+            flex: 1;
+        }
+        
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark-light);
+            color: var(--text-light);
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid rgba(255, 58, 68, 0.3);
+            font-size: 12px;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container" id="mainContainer">
+        <!-- App Header -->
+        <div class="app-header">
+            <div class="header-content">
+                <div class="user-info">
+                    <div class="user-avatar">I</div>
+                    <div>
+                        <div class="user-name">IMZYY STORE</div>
+                        <div class="user-balance">Premium Digital Services</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="app-nav">
+            <div class="nav-item active" onclick="showSection('freefire')">
+                <i class="fas fa-fire"></i>
+                <p>Free Fire</p>
+            </div>
+            <div class="nav-item" onclick="showSection('roblox')">
+                <i class="fas fa-gamepad"></i>
+                <p>Roblox</p>
+            </div>
+            <div class="nav-item" onclick="showSection('topup')">
+                <i class="fas fa-coins"></i>
+                <p>Top Up</p>
+            </div>
+            <div class="nav-item" onclick="showSection('pulsa')">
+                <i class="fas fa-mobile-alt"></i>
+                <p>Pulsa</p>
+            </div>
+            <div class="nav-item" onclick="showSection('impulse')">
+                <i class="fas fa-bolt"></i>
+                <p>Impulse</p>
+            </div>
+            <div class="nav-item" onclick="showSection('game')">
+                <i class="fas fa-chess"></i>
+                <p>Game</p>
+            </div>
+            <div class="nav-item" onclick="showSection('info')">
+                <i class="fas fa-info-circle"></i>
+                <p>Info</p>
+            </div>
+        </div>
+        
+        <!-- App Content -->
+        <div class="app-content">
+            <!-- Free Fire Section -->
+            <div id="freefireSection">
+                <div class="info-box glow">
+                    <div class="info-title">Akun Free Fire Premium</div>
+                    <div class="info-text">Pilih akun Free Fire dengan harga terjangkau. Admin amanah 100% dengan Fast/Slow RESS. Garansi 24 jam.</div>
+                </div>
+                
+                <h2 class="section-title">
+                    <i class="fas fa-fire"></i> Daftar Harga Akun Free Fire
+                </h2>
+                
+                <div class="price-list">
+                    <div class="price-item" onclick="showPaymentModal('Akun Free Fire', 'Rp 25.000')">
+                        <div class="price-value">Rp 25.000</div>
+                        <div class="price-desc">Akun Stock Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Free Fire', 'Rp 45.000')">
+                        <div class="price-value">Rp 45.000</div>
+                        <div class="price-desc">Akun Stock Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Free Fire', 'Rp 65.000')">
+                        <div class="price-value">Rp 65.000</div>
+                        <div class="price-desc">Akun Stock Imzyy</div>
+                        <div class="stock-badge low-stock">Stok Terbatas</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Free Fire', 'Rp 70.000')">
+                        <div class="price-value">Rp 70.000</div>
+                        <div class="price-desc">Akun Stock Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Free Fire', 'Rp 75.000')">
+                        <div class="price-value">Rp 75.000</div>
+                        <div class="price-desc">Akun Stock Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Free Fire', 'Rp 90.000')">
+                        <div class="price-value">Rp 90.000</div>
+                        <div class="price-desc">Akun Stock Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                </div>
+                
+                <div class="calculator-container glow">
+                    <div class="calculator-title">Top Up Diamond Free Fire</div>
+                    
+                    <div class="ff-form-row">
+                        <div class="ff-form-col">
+                            <label class="form-label">ID Free Fire:</label>
+                            <input type="text" id="ffId" class="form-input" placeholder="Masukkan ID Free Fire">
+                        </div>
+                        <div class="ff-form-col">
+                            <label class="form-label">Username:</label>
+                            <input type="text" id="ffUsername" class="form-input" placeholder="Masukkan Username">
+                        </div>
+                    </div>
+                    
+                    <div class="ff-form-row">
+                        <div class="ff-form-col">
+                            <label class="form-label">Level Akun:</label>
+                            <input type="number" id="ffLevel" class="form-input" placeholder="Masukkan Level" min="1" max="100">
+                        </div>
+                        <div class="ff-form-col">
+                            <label class="form-label">Server:</label>
+                            <select id="ffServer" class="form-input">
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Eropa">Eropa</option>
+                                <option value="Amerika">Amerika</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-input">
+                        <input type="number" id="ffDiamond" min="50" max="5000" placeholder="50-5000" oninput="calculateFFDiamond()">
+                        <span>Diamond</span>
+                    </div>
+                    
+                    <div class="calculator-result">
+                        <div class="result-label">Harga yang harus dibayar:</div>
+                        <div class="result-value" id="ffDiamondResult">Rp 0</div>
+                    </div>
+                    
+                    <div class="calculator-note">
+                        * Harga 1 Diamond = Rp 1.000 (lebih murah!)<br>
+                        * Minimal pembelian 50 Diamond<br>
+                        * Maksimal pembelian 5000 Diamond
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title">PENTING!</div>
+                    <div class="info-text">
+                        1. Pastikan ID, Username, Level dan Server sudah benar<br>
+                        2. Setelah melakukan pembelian, tunggu 5-10 menit untuk diproses<br>
+                        3. Jika tidak diproses, harap hubungi admin IMZYY Store via WhatsApp
+                    </div>
+                </div>
+                
+                <button class="whatsapp-btn glow" onclick="showFFDiamondPaymentModal()">
+                    <i class="fas fa-qrcode"></i> Bayar dengan QRIS
+                </button>
+            </div>
+            
+            <!-- Roblox Section -->
+            <div id="robloxSection" class="hidden">
+                <div class="info-box glow">
+                    <div class="info-title">Akun Roblox Premium</div>
+                    <div class="info-text">Pilih akun Roblox dengan harga terjangkau. Admin amanah 100% dengan Fast/Slow RESS. Garansi 24 jam.</div>
+                </div>
+                
+                <h2 class="section-title">
+                    <i class="fas fa-gamepad"></i> Daftar Harga Akun Roblox
+                </h2>
+                
+                <div class="price-list">
+                    <div class="price-item" onclick="showPaymentModal('Akun Roblox', 'Rp 15.000')">
+                        <div class="price-value">Rp 15.000</div>
+                        <div class="price-desc">Akun Basic Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Roblox', 'Rp 25.000')">
+                        <div class="price-value">Rp 25.000</div>
+                        <div class="price-desc">Akun dengan Items</div>
+                        <div class="stock-badge low-stock">Stok Terbatas</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Roblox', 'Rp 30.000')">
+                        <div class="price-value">Rp 30.000</div>
+                        <div class="price-desc">Akun Stock Rblx Imzyy</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Roblox', 'Rp 45.000')">
+                        <div class="price-value">Rp 45.000</div>
+                        <div class="price-desc">Akun dengan Robux</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Akun Roblox', 'Rp 55.000')">
+                        <div class="price-value">Rp 55.000</div>
+                        <div class="price-desc">Akun Limited</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/6281374082409?text=Saya%20mau%20beli%20akun%20Roblox" class="whatsapp-btn glow">
+                    <i class="fab fa-whatsapp"></i> Beli via WhatsApp
+                </a>
+            </div>
+            
+            <!-- Roblox Top Up Section -->
+            <div id="topupSection" class="hidden">
+                <div class="info-box glow">
+                    <div class="info-title">Top Up Robux Termurah</div>
+                    <div class="info-text">Top up Robux dengan harga termurah dan proses cepat. Stok terbatas! Garansi 24 jam.</div>
+                </div>
+                
+                <h2 class="section-title">
+                    <i class="fas fa-coins"></i> Kalkulator Top Up Robux
+                </h2>
+                
+                <div class="calculator-container glow">
+                    <div class="calculator-title">Masukkan jumlah Robux yang diinginkan</div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Username Roblox:</label>
+                        <input type="text" id="robloxUsername" class="form-input" placeholder="Masukkan username Roblox">
+                    </div>
+                    
+                    <div class="calculator-input">
+                        <input type="number" id="robuxInput" min="40" max="5000" placeholder="40-5000" oninput="calculateRobux()">
+                        <span>Robux</span>
+                    </div>
+                    
+                    <div class="calculator-result">
+                        <div class="result-label">Harga yang harus dibayar:</div>
+                        <div class="result-value" id="robuxResult">Rp 0</div>
+                    </div>
+                    
+                    <div class="calculator-note">
+                        * Harga 1 Robux = Rp 350 (lebih murah!)<br>
+                        * Minimal pembelian 40 Robux<br>
+                        * Maksimal pembelian 5000 Robux
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title">PENTING!</div>
+                    <div class="info-text">
+                        1. Pastikan username sudah benar<br>
+                        2. Setelah melakukan pembelian, tunggu 5-10 menit untuk diproses<br>
+                        3. Jika tidak diproses, harap hubungi admin IMZYY Store via WhatsApp
+                    </div>
+                </div>
+                
+                <button class="whatsapp-btn glow" onclick="showRobuxPaymentModal()">
+                    <i class="fas fa-qrcode"></i> Bayar dengan QRIS
+                </button>
+            </div>
+            
+            <!-- Pulsa Section -->
+            <div id="pulsaSection" class="hidden">
+                <div class="info-box glow">
+                    <div class="info-title">Top Up Pulsa All Operator</div>
+                    <div class="info-text">Isi pulsa semua operator dengan harga terjangkau. Proses cepat dan aman. Garansi 100%.</div>
+                </div>
+                
+                <h2 class="section-title">
+                    <i class="fas fa-mobile-alt"></i> Pilih Operator
+                </h2>
+                
+                <div class="operator-tabs">
+                    <div class="operator-tab active" onclick="changePulsaOperator('all')">All Operator</div>
+                    <div class="operator-tab" onclick="changePulsaOperator('telkomsel')">Telkomsel</div>
+                    <div class="operator-tab" onclick="changePulsaOperator('xl')">XL</div>
+                    <div class="operator-tab" onclick="changePulsaOperator('tri')">3</div>
+                </div>
+                
+                <div id="pulsaAllOperator" class="price-list">
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa All Operator', '5000', '6000')">
+                        <div class="price-value">Rp 5.000</div>
+                        <div class="price-desc">Harga: Rp 6.000</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa All Operator', '10000', '11500')">
+                        <div class="price-value">Rp 10.000</div>
+                        <div class="price-desc">Harga: Rp 11.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa All Operator', '15000', '16500')">
+                        <div class="price-value">Rp 15.000</div>
+                        <div class="price-desc">Harga: Rp 16.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa All Operator', '20000', '21500')">
+                        <div class="price-value">Rp 20.000</div>
+                        <div class="price-desc">Harga: Rp 21.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa All Operator', '25000', '26500')">
+                        <div class="price-value">Rp 25.000</div>
+                        <div class="price-desc">Harga: Rp 26.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa All Operator', '30000', '31500')">
+                        <div class="price-value">Rp 30.000</div>
+                        <div class="price-desc">Harga: Rp 31.500</div>
+                    </div>
+                </div>
+                
+                <div id="pulsaTelkomsel" class="price-list hidden">
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa Telkomsel', '5000', '5500')">
+                        <div class="price-value">Rp 5.000</div>
+                        <div class="price-desc">Harga: Rp 5.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa Telkomsel', '10000', '10500')">
+                        <div class="price-value">Rp 10.000</div>
+                        <div class="price-desc">Harga: Rp 10.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa Telkomsel', '20000', '20500')">
+                        <div class="price-value">Rp 20.000</div>
+                        <div class="price-desc">Harga: Rp 20.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa Telkomsel', '50000', '50500')">
+                        <div class="price-value">Rp 50.000</div>
+                        <div class="price-desc">Harga: Rp 50.500</div>
+                    </div>
+                </div>
+                
+                <div id="pulsaXL" class="price-list hidden">
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa XL', '5000', '5500')">
+                        <div class="price-value">Rp 5.000</div>
+                        <div class="price-desc">Harga: Rp 5.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa XL', '10000', '10500')">
+                        <div class="price-value">Rp 10.000</div>
+                        <div class="price-desc">Harga: Rp 10.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa XL', '20000', '20500')">
+                        <div class="price-value">Rp 20.000</div>
+                        <div class="price-desc">Harga: Rp 20.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa XL', '50000', '50500')">
+                        <div class="price-value">Rp 50.000</div>
+                        <div class="price-desc">Harga: Rp 50.500</div>
+                    </div>
+                </div>
+                
+                <div id="pulsaTri" class="price-list hidden">
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa 3 (Tri)', '5000', '5500')">
+                        <div class="price-value">Rp 5.000</div>
+                        <div class="price-desc">Harga: Rp 5.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa 3 (Tri)', '10000', '10500')">
+                        <div class="price-value">Rp 10.000</div>
+                        <div class="price-desc">Harga: Rp 10.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa 3 (Tri)', '20000', '20500')">
+                        <div class="price-value">Rp 20.000</div>
+                        <div class="price-desc">Harga: Rp 20.500</div>
+                    </div>
+                    <div class="price-item" onclick="showPulsaPaymentModal('Pulsa 3 (Tri)', '50000', '50500')">
+                        <div class="price-value">Rp 50.000</div>
+                        <div class="price-desc">Harga: Rp 50.500</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nomor HP (62××):</label>
+                    <input type="text" id="pulsaNumber" class="form-input" placeholder="Contoh: 6281374082409">
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title">PENTING!</div>
+                    <div class="info-text">
+                        1. Pastikan nomor HP sudah benar<br>
+                        2. Setelah melakukan pembelian, tunggu 5-10 menit untuk diproses<br>
+                        3. Jika tidak diproses, harap hubungi admin IMZYY Store via WhatsApp
+                    </div>
+                </div>
+                
+                <button class="whatsapp-btn glow" onclick="showPulsaPaymentModal('Pulsa All Operator', '10000', '11500')">
+                    <i class="fas fa-qrcode"></i> Bayar dengan QRIS
+                </button>
+            </div>
+            
+            <!-- Impulse Section -->
+            <div id="impulseSection" class="hidden">
+                <div class="info-box glow">
+                    <div class="info-title">Paket Data Impulse</div>
+                    <div class="info-text">Paket data internet dengan harga terjangkau dan kuota besar. Cocok untuk streaming dan gaming.</div>
+                </div>
+                
+                <h2 class="section-title">
+                    <i class="fas fa-bolt"></i> Daftar Harga Impulse
+                </h2>
+                
+                <div class="price-list">
+                    <div class="price-item" onclick="showPaymentModal('Impulse 2GB', 'Rp 15.000')">
+                        <div class="price-value">Rp 15.000</div>
+                        <div class="price-desc">Kuota: 2GB</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Impulse 4GB', 'Rp 50.000')">
+                        <div class="price-value">Rp 50.000</div>
+                        <div class="price-desc">Kuota: 4GB</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Impulse 6GB', 'Rp 70.000')">
+                        <div class="price-value">Rp 70.000</div>
+                        <div class="price-desc">Kuota: 6GB</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Impulse 8GB', 'Rp 90.000')">
+                        <div class="price-value">Rp 90.000</div>
+                        <div class="price-desc">Kuota: 8GB</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                    <div class="price-item" onclick="showPaymentModal('Impulse 10GB', 'Rp 130.000')">
+                        <div class="price-value">Rp 130.000</div>
+                        <div class="price-desc">Kuota: 10GB</div>
+                        <div class="stock-badge">Stok Tersedia</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nomor HP (62××):</label>
+                    <input type="text" id="impulseNumber" class="form-input" placeholder="Contoh: 6281374082409">
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title">PENTING!</div>
+                    <div class="info-text">
+                        1. Pastikan nomor HP sudah benar<br>
+                        2. Setelah melakukan pembelian, tunggu 5-10 menit untuk diproses<br>
+                        3. Jika tidak diproses, harap hubungi admin IMZYY Store via WhatsApp
+                    </div>
+                </div>
+                
+                <button class="whatsapp-btn glow" onclick="showImpulsePaymentModal()">
+                    <i class="fas fa-qrcode"></i> Bayar dengan QRIS
+                </button>
+            </div>
+            
+            <!-- Game Section -->
+            <div id="gameSection" class="hidden">
+                <div class="info-box glow">
+                    <div class="info-title">Game Seru</div>
+                    <div class="info-text">Mainkan game seru untuk mengisi waktu luang. Gratis tanpa biaya!</div>
+                </div>
+                
+                <h2 class="section-title">
+                    <i class="fas fa-chess"></i> Tic Tac Toe
+                </h2>
+                
+                <div class="game-container glow">
+                    <div class="game-title">Tic Tac Toe (XOXO)</div>
+                    <div class="game-status" id="gameStatus">Giliran: X</div>
+                    <div class="game-board" id="gameBoard">
+                        <div class="game-cell" onclick="makeMove(0)"></div>
+                        <div class="game-cell" onclick="makeMove(1)"></div>
+                        <div class="game-cell" onclick="makeMove(2)"></div>
+                        <div class="game-cell" onclick="makeMove(3)"></div>
+                        <div class="game-cell" onclick="makeMove(4)"></div>
+                        <div class="game-cell" onclick="makeMove(5)"></div>
+                        <div class="game-cell" onclick="makeMove(6)"></div>
+                        <div class="game-cell" onclick="makeMove(7)"></div>
+                        <div class="game-cell" onclick="makeMove(8)"></div>
+                    </div>
+                    <button class="game-btn" onclick="resetGame()">Ulangi Permainan</button>
+                </div>
+            </div>
+            
+            <!-- Info Section -->
+            <div id="infoSection" class="hidden">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i> Informasi Pembelian
+                </h2>
+                
+                <div class="info-box glow">
+                    <div class="info-title">Cara Pembelian</div>
+                    <div class="info-text">
+                        1. Pilih produk yang ingin dibeli<br>
+                        2. Klik tombol "Beli via WhatsApp" atau "Bayar dengan QRIS"<br>
+                        3. Konfirmasi pembelian ke admin<br>
+                        4. Lakukan pembayaran<br>
+                        5. Terima produk setelah pembayaran dikonfirmasi
+                    </div>
+                </div>
+                
+                <div class="info-box glow">
+                    <div class="info-title">Metode Pembayaran</div>
+                    <div class="info-text">
+                        - QRIS (Scan QR code yang tersedia)<br>
+                        - DANA: 081373070063 (IMZYY OFFICIAL)<br>
+                        - Transfer Bank (Info lebih lanjut via WhatsApp)
+                    </div>
+                </div>
+                
+                <div class="info-box glow">
+                    <div class="info-title">Ketentuan</div>
+                    <div class="info-text">
+                        - Admin amanah 100%<br>
+                        - Proses Fast/Slow RESS tergantung kondisi<br>
+                        - Garansi akun 1x24 jam setelah pembelian<br>
+                        - Tidak ada refund setelah produk diterima
+                    </div>
+                </div>
+                
+                <div class="note-box">
+                    <div class="note-title">PENTING!</div>
+                    <div class="info-text">
+                        Setelah melakukan pembelian, tunggu 5-10 menit untuk diproses. Jika tidak diproses, harap hubungi admin IMZYY Store via WhatsApp.
+                    </div>
+                </div>
+                
+                <div class="payment-info glow">
+                    <div class="payment-title">Pembayaran via QRIS</div>
+                    <img src="https://files.catbox.moe/mscaoj.jpg" alt="QRIS Payment" class="qris-image">
+                    <div class="payment-note">Scan QR code di atas untuk pembayaran</div>
+                </div>
+                
+                <a href="https://wa.me/6281374082409" class="whatsapp-btn glow">
+                    <i class="fab fa-whatsapp"></i> Hubungi Admin
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Pembayaran</div>
+                <div class="close-modal" onclick="closeModal()">&times;</div>
+            </div>
+            
+            <div id="modalProductInfo">
+                <!-- Product info will be inserted here -->
+            </div>
+            
+            <div class="payment-info glow">
+                <div class="payment-title">Pembayaran via QRIS</div>
+                <img src="https://files.catbox.moe/mscaoj.jpg" alt="QRIS Payment" class="qris-image">
+                <div class="payment-note">Scan QR code di atas untuk pembayaran</div>
+            </div>
+            
+            <div class="note-box">
+                <div class="note-title">PENTING!</div>
+                <div class="info-text">
+                    Setelah melakukan pembayaran, tunggu 5-10 menit untuk diproses. Jika tidak diproses, harap hubungi admin IMZYY Store via WhatsApp.
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="continue-btn" onclick="continueToWhatsApp()">Konfirmasi Pembayaran</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281374082409" class="floating-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Game State
+        let currentPlayer = 'X';
+        let gameState = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+        
+        // Game Functions
+        function makeMove(cellIndex) {
+            if (gameState[cellIndex] !== '' || !gameActive) return;
+            
+            gameState[cellIndex] = currentPlayer;
+            document.querySelectorAll('.game-cell')[cellIndex].textContent = currentPlayer;
+            
+            checkResult();
+            if (gameActive) {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                document.getElementById('gameStatus').textContent = `Giliran: ${currentPlayer}`;
+            }
+        }
+        
+        function checkResult() {
+            const winningConditions = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+                [0, 4, 8], [2, 4, 6]             // diagonals
+            ];
+            
+            let roundWon = false;
+            
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (gameState[a] === '' || gameState[b] === '' || gameState[c] === '') continue;
+                
+                if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+            
+            if (roundWon) {
+                document.getElementById('gameStatus').textContent = `Pemenang: ${currentPlayer}`;
+                gameActive = false;
+                return;
+            }
+            
+            if (!gameState.includes('')) {
+                document.getElementById('gameStatus').textContent = 'Permainan Seri!';
+                gameActive = false;
+            }
+        }
+        
+        function resetGame() {
+            currentPlayer = 'X';
+            gameState = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            document.getElementById('gameStatus').textContent = 'Giliran: X';
+            document.querySelectorAll('.game-cell').forEach(cell => cell.textContent = '');
+        }
+        
+        // Show App Section
+        function showSection(section) {
+            // Hide all sections first
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Set active nav item
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                if (item.querySelector('p').textContent.toLowerCase().includes(section)) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Hide all content sections
+            document.querySelectorAll('#freefireSection, #robloxSection, #topupSection, #pulsaSection, #impulseSection, #gameSection, #infoSection').forEach(sec => {
+                sec.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(section + 'Section').classList.remove('hidden');
+        }
+        
+        // Robux Calculator Function
+        function calculateRobux() {
+            const robuxInput = document.getElementById('robuxInput');
+            const robuxResult = document.getElementById('robuxResult');
+            
+            let robux = parseInt(robuxInput.value);
+            
+            // Validate input
+            if (isNaN(robux)) {
+                robuxResult.textContent = 'Rp 0';
+                return;
+            }
+            
+            if (robux < 40) {
+                robux = 40;
+                robuxInput.value = 40;
+            } else if (robux > 5000) {
+                robux = 5000;
+                robuxInput.value = 5000;
+            }
+            
+            // Calculate price (1 Robux = Rp 350)
+            const price = robux * 350;
+            
+            // Format price as currency
+            robuxResult.textContent = 'Rp ' + price.toLocaleString('id-ID');
+        }
+        
+        // Free Fire Diamond Calculator Function
+        function calculateFFDiamond() {
+            const ffDiamond = document.getElementById('ffDiamond');
+            const ffDiamondResult = document.getElementById('ffDiamondResult');
+            
+            let diamond = parseInt(ffDiamond.value);
+            
+            // Validate input
+            if (isNaN(diamond)) {
+                ffDiamondResult.textContent = 'Rp 0';
+                return;
+            }
+            
+            if (diamond < 50) {
+                diamond = 50;
+                ffDiamond.value = 50;
+            } else if (diamond > 5000) {
+                diamond = 5000;
+                ffDiamond.value = 5000;
+            }
+            
+            // Calculate price (1 Diamond = Rp 1.000)
+            const price = diamond * 1000;
+            
+            // Format price as currency
+            ffDiamondResult.textContent = 'Rp ' + price.toLocaleString('id-ID');
+        }
+        
+        // Change Pulsa Operator
+        function changePulsaOperator(operator) {
+            // Set active tab
+            document.querySelectorAll('.operator-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show selected operator
+            document.getElementById('pulsaAllOperator').classList.add('hidden');
+            document.getElementById('pulsaTelkomsel').classList.add('hidden');
+            document.getElementById('pulsaXL').classList.add('hidden');
+            document.getElementById('pulsaTri').classList.add('hidden');
+            
+            document.getElementById('pulsa' + operator.charAt(0).toUpperCase() + operator.slice(1)).classList.remove('hidden');
+        }
+        
+        // Show Payment Modal
+        function showPaymentModal(product, price) {
+            const modal = document.getElementById('paymentModal');
+            const productInfo = document.getElementById('modalProductInfo');
+            
+            productInfo.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Produk:</div>
+                    <div style="font-size: 15px; color: white;">${product}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Harga:</div>
+                    <div style="font-size: 18px; color: var(--primary); font-weight: 700;">${price}</div>
+                </div>
+            `;
+            
+            // Store current product info for WhatsApp message
+            modal.dataset.product = product;
+            modal.dataset.price = price;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Show Robux Payment Modal
+        function showRobuxPaymentModal() {
+            const robuxInput = document.getElementById('robuxInput');
+            const robloxUsername = document.getElementById('robloxUsername');
+            
+            let robux = robuxInput.value ? parseInt(robuxInput.value) : 0;
+            if (isNaN(robux) || robux < 40) robux = 40;
+            if (robux > 5000) robux = 5000;
+            const price = robux * 350;
+            const username = robloxUsername.value ? robloxUsername.value : 'Belum diisi';
+            
+            const modal = document.getElementById('paymentModal');
+            const productInfo = document.getElementById('modalProductInfo');
+            
+            productInfo.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Produk:</div>
+                    <div style="font-size: 15px; color: white;">Top Up Roblox</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Username:</div>
+                    <div style="font-size: 15px; color: white;">${username}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Jumlah Robux:</div>
+                    <div style="font-size: 15px; color: white;">${robux} Robux</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Harga:</div>
+                    <div style="font-size: 18px; color: var(--primary); font-weight: 700;">Rp ${price.toLocaleString('id-ID')}</div>
+                </div>
+            `;
+            
+            // Store current product info for WhatsApp message
+            modal.dataset.product = `Top Up Roblox ${robux} Robux`;
+            modal.dataset.price = `Rp ${price.toLocaleString('id-ID')}`;
+            modal.dataset.username = username;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Show Free Fire Diamond Payment Modal
+        function showFFDiamondPaymentModal() {
+            const ffDiamond = document.getElementById('ffDiamond');
+            const ffId = document.getElementById('ffId');
+            const ffUsername = document.getElementById('ffUsername');
+            const ffLevel = document.getElementById('ffLevel');
+            const ffServer = document.getElementById('ffServer');
+            
+            let diamond = ffDiamond.value ? parseInt(ffDiamond.value) : 0;
+            if (isNaN(diamond) || diamond < 50) diamond = 50;
+            if (diamond > 5000) diamond = 5000;
+            const price = diamond * 1000;
+            const id = ffId.value ? ffId.value : 'Belum diisi';
+            const username = ffUsername.value ? ffUsername.value : 'Belum diisi';
+            const level = ffLevel.value ? ffLevel.value : 'Belum diisi';
+            const server = ffServer.value;
+            
+            const modal = document.getElementById('paymentModal');
+            const productInfo = document.getElementById('modalProductInfo');
+            
+            productInfo.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Produk:</div>
+                    <div style="font-size: 15px; color: white;">Top Up Diamond Free Fire</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">ID Free Fire:</div>
+                    <div style="font-size: 15px; color: white;">${id}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Username:</div>
+                    <div style="font-size: 15px; color: white;">${username}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Level Akun:</div>
+                    <div style="font-size: 15px; color: white;">${level}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Server:</div>
+                    <div style="font-size: 15px; color: white;">${server}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Jumlah Diamond:</div>
+                    <div style="font-size: 15px; color: white;">${diamond} Diamond</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Harga:</div>
+                    <div style="font-size: 18px; color: var(--primary); font-weight: 700;">Rp ${price.toLocaleString('id-ID')}</div>
+                </div>
+            `;
+            
+            // Store current product info for WhatsApp message
+            modal.dataset.product = `Top Up Diamond Free Fire ${diamond} Diamond`;
+            modal.dataset.price = `Rp ${price.toLocaleString('id-ID')}`;
+            modal.dataset.id = id;
+            modal.dataset.username = username;
+            modal.dataset.level = level;
+            modal.dataset.server = server;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Show Pulsa Payment Modal
+        function showPulsaPaymentModal(product, nominal, price) {
+            const pulsaNumber = document.getElementById('pulsaNumber');
+            const number = pulsaNumber.value ? pulsaNumber.value : 'Belum diisi';
+            
+            const modal = document.getElementById('paymentModal');
+            const productInfo = document.getElementById('modalProductInfo');
+            
+            productInfo.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Produk:</div>
+                    <div style="font-size: 15px; color: white;">${product}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Nomor HP:</div>
+                    <div style="font-size: 15px; color: white;">${number}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Nominal:</div>
+                    <div style="font-size: 15px; color: white;">Rp ${nominal}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Harga:</div>
+                    <div style="font-size: 18px; color: var(--primary); font-weight: 700;">Rp ${price}</div>
+                </div>
+            `;
+            
+            // Store current product info for WhatsApp message
+            modal.dataset.product = product;
+            modal.dataset.nominal = nominal;
+            modal.dataset.price = price;
+            modal.dataset.number = number;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Show Impulse Payment Modal
+        function showImpulsePaymentModal() {
+            const impulseNumber = document.getElementById('impulseNumber');
+            const number = impulseNumber.value ? impulseNumber.value : 'Belum diisi';
+            
+            const modal = document.getElementById('paymentModal');
+            const productInfo = document.getElementById('modalProductInfo');
+            
+            productInfo.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Produk:</div>
+                    <div style="font-size: 15px; color: white;">Paket Data Impulse</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Nomor HP:</div>
+                    <div style="font-size: 15px; color: white;">${number}</div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 5px; color: var(--text-light);">Pilih Paket:</div>
+                    <select id="impulsePackage" class="form-input" style="width: 100%; margin-top: 5px;">
+                        <option value="15000">2GB - Rp 15.000</option>
+                        <option value="50000">4GB - Rp 50.000</option>
+                        <option value="70000">6GB - Rp 70.000</option>
+                        <option value="90000">8GB - Rp 90.000</option>
+                        <option value="130000">10GB - Rp 130.000</option>
+                    </select>
+                </div>
+            `;
+            
+            // Store current product info for WhatsApp message
+            modal.dataset.product = 'Paket Data Impulse';
+            modal.dataset.number = number;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Close Modal
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+        
+        // Continue to WhatsApp after payment
+        function continueToWhatsApp() {
+            const modal = document.getElementById('paymentModal');
+            let whatsappMessage = '';
+            
+            if (modal.dataset.product.includes('Top Up Roblox')) {
+                const robuxInput = document.getElementById('robuxInput');
+                const robloxUsername = document.getElementById('robloxUsername');
+                let robux = robuxInput.value ? parseInt(robuxInput.value) : 0;
+                if (isNaN(robux) || robux < 40) robux = 40;
+                if (robux > 5000) robux = 5000;
+                const price = robux * 350;
+                const username = robloxUsername.value ? robloxUsername.value : 'Belum diisi';
+                
+                whatsappMessage = `Halo admin, saya sudah membayar Top Up Roblox%0AUsername: ${encodeURIComponent(username)}%0AJumlah Robux: ${robux} (Rp ${price.toLocaleString('id-ID')})%0ASudah melakukan pembayaran via QRIS%0ATolong diproses ya admin`;
+            } 
+            else if (modal.dataset.product.includes('Top Up Diamond Free Fire')) {
+                const ffDiamond = document.getElementById('ffDiamond');
+                const ffId = document.getElementById('ffId');
+                const ffUsername = document.getElementById('ffUsername');
+                const ffLevel = document.getElementById('ffLevel');
+                const ffServer = document.getElementById('ffServer');
+                
+                let diamond = ffDiamond.value ? parseInt(ffDiamond.value) : 0;
+                if (isNaN(diamond) || diamond < 50) diamond = 50;
+                if (diamond > 5000) diamond = 5000;
+                const price = diamond * 1000;
+                const id = ffId.value ? ffId.value : 'Belum diisi';
+                const username = ffUsername.value ? ffUsername.value : 'Belum diisi';
+                const level = ffLevel.value ? ffLevel.value : 'Belum diisi';
+                const server = ffServer.value;
+                
+                whatsappMessage = `Halo admin, saya sudah membayar Top Up Diamond Free Fire%0AID: ${encodeURIComponent(id)}%0AUsername: ${encodeURIComponent(username)}%0ALevel: ${encodeURIComponent(level)}%0AServer: ${encodeURIComponent(server)}%0AJumlah Diamond: ${diamond} (Rp ${price.toLocaleString('id-ID')})%0ASudah melakukan pembayaran via QRIS%0ATolong diproses ya admin`;
+            }
+            else if (modal.dataset.product.includes('Pulsa')) {
+                const pulsaNumber = document.getElementById('pulsaNumber');
+                const number = pulsaNumber.value ? pulsaNumber.value : 'Belum diisi';
+                
+                whatsappMessage = `Halo admin, saya sudah membayar ${encodeURIComponent(modal.dataset.product)}%0ANomor HP: ${encodeURIComponent(number)}%0ANominal: Rp ${modal.dataset.nominal} (Harga: Rp ${modal.dataset.price})%0ASudah melakukan pembayaran via QRIS%0ATolong diproses ya admin`;
+            }
+            else if (modal.dataset.product === 'Paket Data Impulse') {
+                const impulseNumber = document.getElementById('impulseNumber');
+                const packageSelect = document.getElementById('impulsePackage');
+                const package = packageSelect ? packageSelect.value : '15000';
+                const number = impulseNumber.value ? impulseNumber.value : 'Belum diisi';
+                
+                let packageName = '2GB';
+                if (package === '50000') packageName = '4GB';
+                else if (package === '70000') packageName = '6GB';
+                else if (package === '90000') packageName = '8GB';
+                else if (package === '130000') packageName = '10GB';
+                
+                whatsappMessage = `Halo admin, saya sudah membayar Paket Data Impulse%0ANomor HP: ${encodeURIComponent(number)}%0APaket: ${packageName} (Rp ${package})%0ASudah melakukan pembayaran via QRIS%0ATolong diproses ya admin`;
+            }
+            else {
+                whatsappMessage = `Halo admin, saya sudah membayar ${encodeURIComponent(modal.dataset.product)} seharga ${encodeURIComponent(modal.dataset.price)}%0ASudah melakukan pembayaran via QRIS%0ATolong diproses ya admin`;
+            }
+            
+            window.location.href = `https://wa.me/6281374082409?text=${whatsappMessage}`;
+            closeModal();
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
